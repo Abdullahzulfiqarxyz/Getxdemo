@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getxdemoapp/Services/strings.dart';
+import 'package:getxdemoapp/Screens/employee_list_screen.dart';
+
+import '../Controllers/home_screen_controller.dart';
+import '../Services/strings.dart';
 
 import 'login_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+  final HomeScreenController _ = Get.put(HomeScreenController());
+
   static String route = "/HomeScreen";
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,77 +21,47 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xFF00A57A), Color(0xFF008F7A)],
-          ),
-        ),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    // TODO: Navigate to the employee list screen
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFF008F7A),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
-                  child: const Text("View Employees"),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // TODO: Navigate to the create employee screen
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFF008F7A),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
-                  child: const Text("Create Employee"),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // TODO: Navigate to the update employee screen
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFF008F7A),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
-                  child: const Text("Update Employee"),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // TODO: Navigate to the delete employee screen
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFF008F7A),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
-                  child: const Text("Delete Employee"),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Go back to the previous screen
-                    Get.toNamed(LoginScreen.route);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFF008F7A),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
-                  child: const Text("Go Back"),
-                ),
-              ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed(EmployeeListScreen.route);
+              },
+              child: const Text("View Employees"),
             ),
-          ),
+            ElevatedButton(
+              onPressed: () {
+                // TODO: Navigate to the create employee screen
+              },
+              child: const Text("Create Employee"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // TODO: Navigate to the update employee screen
+              },
+              child: const Text("Update Employee"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // TODO: Navigate to the delete employee screen
+              },
+              child: const Text("Delete Employee"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Go back to the previous screen
+                Get.toNamed(LoginScreen.route);
+              },
+              child: const Text("Go Back"),
+            ),
+            Obx(() => Text('Counter: ${_.i}')),
+            ElevatedButton(
+              onPressed: () => _.increment(),
+              child: Text('Increment Counter'),
+            ),
+          ],
         ),
       ),
     );

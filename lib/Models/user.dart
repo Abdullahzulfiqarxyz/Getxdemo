@@ -1,5 +1,5 @@
 class User {
-  final String id;
+  final int id;
   final String username;
   final String email;
   final String firstName;
@@ -52,7 +52,7 @@ class User {
 
   static User fromString(String string) {
     var parts = string.split(', ');
-    var id = parts[0].substring(8);
+    var id = int.parse(parts[0].substring(8));
     var username = parts[1].substring(11);
     var email = parts[2].substring(8);
     var firstName = parts[3].substring(12);

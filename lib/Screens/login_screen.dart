@@ -18,13 +18,6 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xFF00A57A), Color(0xFF008F7A)],
-          ),
-        ),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -34,14 +27,12 @@ class LoginScreen extends StatelessWidget {
                 const Icon(
                   Icons.lock,
                   size: 80,
-                  color: Colors.white,
                 ),
                 const SizedBox(height: 20),
                 const Text(
                   "Welcome to MyApp",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.white,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
@@ -67,32 +58,28 @@ class LoginScreen extends StatelessWidget {
                         const Center(child: CircularProgressIndicator()));
                     try {
                       bool result = await _.login(username, password);
+                      //  bool result = await _.login("atuny0", "9uQFF1Lh");
                       if (result) {
                         // Navigate to the home screen if login is successful
                         Get.offAllNamed(HomeScreen.route);
                       } else {
                         // Handle login failure (show an error message, etc.)
-                        // For example, you can show a snackbar or dialog
-
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text(
                               'Login Failed. Please check your credentials.',
                             ),
-                            backgroundColor: Colors.red,
-                            behavior: SnackBarBehavior.floating,
                           ),
                         );
                       }
                     } finally {
                       Get.back(); // Close the loading indicator
                     }
+
+                    //AuthApi.authUser("atuny0", "9uQFF1Lh");
+                    // AuthApi.authUser(username, password);
+                    // //AuthApi.authUser("atuny0", "9uQFF1Lh");
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFF008F7A),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
                   child: const Text(
                     "Login",
                     style: TextStyle(fontSize: 16),
@@ -110,7 +97,6 @@ class LoginScreen extends StatelessWidget {
                       },
                       child: const Text(
                         "Forgot Password?",
-                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                     // Create Account
@@ -120,7 +106,6 @@ class LoginScreen extends StatelessWidget {
                       },
                       child: const Text(
                         "Create Account",
-                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ],

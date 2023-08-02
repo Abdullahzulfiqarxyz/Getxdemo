@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: appTittle,
-      theme: AppTheme.lightTheme,
+      //theme: ThemeData.dark(),
+      theme: AppTheme.darkTheme,
       initialRoute: LoginScreen.route,
       getPages: AppRoutes.pages,
     );
