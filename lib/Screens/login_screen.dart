@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getxdemoapp/Services/strings.dart';
 
 import '../Controllers/login_screen_controller.dart';
 import '../Widgets/password_textfield_widget.dart';
@@ -74,8 +73,16 @@ class LoginScreen extends StatelessWidget {
                       } else {
                         // Handle login failure (show an error message, etc.)
                         // For example, you can show a snackbar or dialog
-                        Get.snackbar(
-                            'Login Failed', 'Please check your credentials');
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              'Login Failed. Please check your credentials.',
+                            ),
+                            backgroundColor: Colors.red,
+                            behavior: SnackBarBehavior.floating,
+                          ),
+                        );
                       }
                     } finally {
                       Get.back(); // Close the loading indicator
@@ -87,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
                   child: const Text(
-                    loginBtnTxt,
+                    "Login",
                     style: TextStyle(fontSize: 16),
                   ),
                 ),

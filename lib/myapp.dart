@@ -4,6 +4,7 @@ import 'package:getxdemoapp/Screens/login_screen.dart';
 import 'package:getxdemoapp/Services/strings.dart';
 
 import 'Services/app_routes.dart';
+import 'app_theme.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,10 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: appTittle,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.lightTheme,
       initialRoute: LoginScreen.route,
       getPages: AppRoutes.pages,
     );
