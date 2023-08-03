@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getxdemoapp/Screens/add_employee.dart';
 import 'package:getxdemoapp/Screens/employee_list_screen.dart';
 
 import '../Controllers/home_screen_controller.dart';
@@ -33,7 +34,7 @@ class HomeScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                // TODO: Navigate to the create employee screen
+                Get.toNamed(AddEmployeeScreen.route);
               },
               child: const Text("Create Employee"),
             ),
@@ -56,7 +57,21 @@ class HomeScreen extends StatelessWidget {
               },
               child: const Text("Go Back"),
             ),
-            Obx(() => Text('Counter: ${_.i}')),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Obx(() => Text('Counter: ${_.i}')),
+                SizedBox(width: 20),
+                Text('Dark Theme'),
+                Switch(
+                  value: _.isDarkTheme.value,
+                  onChanged: (bool newValue) {
+                    _.toggleTheme();
+                  },
+                ),
+                Text('Light Theme'),
+              ],
+            ),
             ElevatedButton(
               onPressed: () => _.increment(),
               child: Text('Increment Counter'),

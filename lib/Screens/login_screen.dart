@@ -58,12 +58,13 @@ class LoginScreen extends StatelessWidget {
                         const Center(child: CircularProgressIndicator()));
                     try {
                       bool result = await _.login(username, password);
-                      //  bool result = await _.login("atuny0", "9uQFF1Lh");
+                      //bool result = await _.login("atuny0", "9uQFF1Lh");
                       if (result) {
                         // Navigate to the home screen if login is successful
                         Get.offAllNamed(HomeScreen.route);
                       } else {
                         // Handle login failure (show an error message, etc.)
+                        // ignore: use_build_context_synchronously
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text(

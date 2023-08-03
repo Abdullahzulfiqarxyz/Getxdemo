@@ -6,6 +6,8 @@ import 'package:getxdemoapp/Screens/employee_screen.dart';
 import 'package:getxdemoapp/Screens/home_screen.dart';
 import 'package:getxdemoapp/Screens/login_screen.dart';
 
+import '../Screens/add_employee.dart';
+
 class AppRoutes {
   static final pages = [
     GetPage(
@@ -23,6 +25,10 @@ class AppRoutes {
     GetPage(
       name: EmployeeScreen.route,
       page: () => EmployeeScreen(employeeId: Get.arguments['employeeId']),
+    ),
+    GetPage(
+      name: AddEmployeeScreen.route,
+      page: () => AddEmployeeScreen(),
     ),
   ];
 }

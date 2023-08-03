@@ -17,7 +17,7 @@ class EmployeeScreen extends StatelessWidget {
         title: Text('Employee Details'),
       ),
       body: FutureBuilder<Employee>(
-        future: EmployeeServices.getEmployeeById(1),
+        future: EmployeeServices.getEmployeeById(employeeId),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
